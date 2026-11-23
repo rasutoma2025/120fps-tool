@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#e2553d">
+  <title>Tomato Tools</title>
+  <meta name="description" content="ブラウザ内で動画を1080p60に変換。動画はサーバーに送信されません。">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <span class="brand"><span class="dot" aria-hidden="true"></span>Tomato Tools</span>
+    <span class="badge">端末内処理</span>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>Tomato Tools</h1>
+      <p class="lead">動画をブラウザ内で1080p60に変換。登録不要・回数無制限。</p>
+    </section>
+
+    <section class="workspace">
+      <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="動画を選択">
+        <input id="fileInput" type="file" accept="video/*,.mp4,.mov,.m4v,.webm,.mkv" hidden>
+        <span class="plus" aria-hidden="true">＋</span>
+        <strong>動画を選択</strong>
+        <span>またはここにドラッグ＆ドロップ</span>
+        <small>端末内で処理 · MP4 / MOV</small>
+      </div>
+
+      <div id="progressPanel" class="panel" hidden role="status">
+        <div class="row"><span id="progressText">準備中…</span><strong id="progressValue">0%</strong></div>
+        <div class="track"><span id="progressBar"></span></div>
+        <p class="note">動画は端末内で処理されます。</p>
+      </div>
+
+      <div id="errorBox" class="error" hidden role="alert"></div>
+
+      <div id="resultPanel" class="panel result" hidden>
+        <div class="result-head">
+          <span class="check" aria-hidden="true">✓</span>
+          <div><strong>処理完了</strong><span id="resultInfo"></span></div>
+        </div>
+        <a id="downloadLink" class="download-btn" download="tomato-output.mp4">処理済みMP4をダウンロード</a>
+        <button id="againBtn" class="again-btn" type="button">別のファイルを処理</button>
+      </div>
+
+      <p class="mini-note">無料・回数無制限。動画は端末内で処理されます。</p>
+    </section>
+  </main>
+
+  <footer><span>Tomato Tools</span><span>MIT License</span></footer>
+
+  <!-- ffmpeg.wasm シングルスレッド版（バージョン固定） -->
+  <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js"></script>
+  <script src="https://unpkg.com/@ffmpeg/util@0.12.1/dist/umd/index.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
